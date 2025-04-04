@@ -1,0 +1,85 @@
+/* Общие стили для логина и регистрации */
+
+.auth-container {
+    background-color: var(--page-bg);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    max-width: 400px;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.auth-container h2 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.btn-auth {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-auth:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.auth-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+/* Цвета и темы */
+:root {
+    --white: #fff;
+    --primary-color: #5d9bff;
+    --primary-color-dark: #468cfc;
+    --text-color: #333;
+    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}

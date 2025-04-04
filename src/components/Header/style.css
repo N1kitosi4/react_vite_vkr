@@ -1,0 +1,235 @@
+/* .header {
+    padding: 40px 0;
+    min-height: 695px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--dark-bg);
+    background-color: rgb(80, 80, 80);
+    background-image: url('./../../img/book.svg');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center center;
+
+    color: var(--header-text);
+    text-align: center;
+}
+
+.header__wrapper {
+    padding: 0 15px;
+    max-width: 660px;
+}
+
+.header__title {
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.header__title strong {
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.header__title em {
+    font-style: normal;
+    color: var(--accent);
+}
+
+.header__text {
+    margin-bottom: 40px;
+    font-size: 18px;
+    line-height: 1.333;
+}
+
+.header__text p + p{
+    margin-top: 0.5em;
+}
+
+
+
+
+
+
+.search-sort-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    gap: 10px;
+}
+
+.search-input, .genre-select {
+    padding: 10px;
+    border: 1px solid var(--);
+    border-radius: 5px;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 1rem;
+}
+
+.genre-select {
+    cursor: pointer;
+}
+
+.search-input::placeholder {
+    color: var(--white);
+} */
+
+
+.header {
+    padding: 40px 15px;
+    min-height: 695px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(80, 80, 80);
+    background-image: url('./../../img/book.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: var(--header-text);
+    text-align: center;
+}
+
+.header__wrapper {
+    padding: 0 15px;
+    max-width: 660px;
+    width: 100%;
+}
+
+/* Заголовки */
+.header__title {
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.header__title strong {
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.header__title em {
+    font-style: normal;
+    color: var(--accent);
+}
+
+.header__text {
+    margin-bottom: 40px;
+    font-size: 18px;
+    line-height: 1.333;
+}
+
+.header__text p + p {
+    margin-top: 0.5em;
+}
+
+/* Поиск и сортировка */
+.search-sort-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.search-input, .genre-select {
+    padding: 10px;
+    border: 1px solid var(--white);
+    border-radius: 5px;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+.genre-select {
+    cursor: pointer;
+}
+
+.search-input::placeholder {
+    color: var(--white);
+}
+
+/* Кнопка */
+.btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--accent-dark);
+}
+
+/* 🔹 Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .header {
+        min-height: auto;
+        height: auto;
+        padding: 80px 15px;
+        background-size: cover;
+    }
+
+    .header__title {
+        font-size: 32px;
+    }
+
+    .header__title strong {
+        font-size: 50px;
+    }
+
+    .header__text {
+        font-size: 16px;
+    }
+
+    .search-sort-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-input, .genre-select {
+        max-width: 100%;
+    }
+}
+
+/* 🔹 Адаптивность для экранов до 360px */
+@media (max-width: 360px) {
+    .header {
+        padding: 60px 10px;
+    }
+
+    .header__title {
+        font-size: 28px;
+    }
+
+    .header__title strong {
+        font-size: 40px;
+    }
+
+    .header__text {
+        font-size: 14px;
+    }
+
+    .search-input, .genre-select {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}

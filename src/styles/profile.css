@@ -1,0 +1,523 @@
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: center;
+    padding:10px;
+}
+
+.profile-info__avatar {
+    background-color: #fff;
+    background-color: #e6e1e1;
+    flex-shrink: 0;
+    max-width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 39px 39px 45px -22px rgba(83, 25, 86, 0.32);
+    
+}
+
+.profile-info__avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+.profile-info__details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+    background-color: var(--accent);
+    border-radius: 12px;
+    width: max-content;
+    height: max-content;
+}
+
+.profile-info__name {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 15px auto;
+}
+
+.profile-info__job {
+    margin: 15px auto;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--review-card-text);
+}
+
+.profile-info__socials {
+    margin: 15px auto;
+    display: flex;
+    gap: 20px;
+}
+
+.profile-info__socials .social__item {
+    display: flex;
+    width: 35px;
+    height: 35px;
+    padding-left: 2px;
+    padding-right: 2px;
+    align-items: center;
+    justify-items: center;
+}
+
+.profile-avatar-upload {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 5px;
+    align-items: center;
+    justify-items: center;
+}
+
+.profile-avatar-upload input {
+    padding: 15px 5px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    cursor: pointer;
+    color: var(--review-card-text)
+}
+
+.title-2__profile {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 35px 0px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: center;
+    padding: 10px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+/* Аватар */
+.profile-info__avatar {
+    background-color: #e6e1e1;
+    flex-shrink: 0;
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 39px 39px 45px -22px rgba(83, 25, 86, 0.32);
+}
+
+.profile-info__avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Данные профиля */
+.profile-info__details {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--accent);
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    height: max-content;
+    text-align: center;
+}
+
+/* Имя и профессия */
+.profile-info__name {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.profile-info__job {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--review-card-text);
+    margin-bottom: 15px;
+}
+
+/* Социальные сети */
+.profile-info__socials {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.profile-info__socials .social__item {
+    display: flex;
+    width: 35px;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Загрузка аватара */
+.profile-avatar-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 5px;
+}
+
+.profile-avatar-upload input {
+    padding: 10px;
+    border: none;
+}
+
+.title-2__profile {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 35px 0;
+}
+
+.btn-profile {
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px auto;
+
+    border-radius: 12px;
+    /*border: 1px solid var(--review-card-text);*/
+    background-color: transparent;
+    color: var(--review-card-text);
+    letter-spacing: 0.15px;
+    font-size: 16px;
+    font-weight: 500;
+
+    transition: opacity 0.2s ease-in;
+}
+
+@media (min-width: 768px) {
+    .reviews-slider {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .review-card {
+        flex-grow: 1;
+    }
+}
+
+/* 🔹 Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .profile-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-info__avatar {
+        width: 200px;
+        height: 200px;
+    }
+
+    .profile-info__details {
+        max-width: 90%;
+    }
+
+    .profile-info__name {
+        font-size: 28px;
+    }
+
+    .profile-info__job {
+        font-size: 16px;
+    }
+
+    .profile-info__details {
+        padding: 15px;
+    }
+
+    .profile-avatar-upload input {
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+    }
+
+}
+
+/* 🔹 Адаптивность для экранов до 360px */
+
+@media (max-width: 360px) {
+    .profile-info__avatar {
+        width: 150px;
+        height: 150px;
+    }
+
+    .profile-info__details {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .profile-info__name {
+        font-size: 24px;
+    }
+
+    .profile-info__job {
+        font-size: 14px;
+    }
+
+    .profile-info__socials {
+        gap: 10px;
+    }
+
+    .profile-info__socials .social__item {
+        width: 30px;
+        height: 30px;
+    }
+
+    .title-2__profile {
+        font-size: 32px;
+    }
+
+    .profile-avatar-upload input {
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+    }
+
+}
+
+.user-stats {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    margin: 20px auto;
+  }
+  
+  .user-stats p {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 5px;
+  }
+  
+  .user-stats p:last-child {
+    border-bottom: none;
+  }
+  
+  @media (max-width: 768px) {
+    .user-stats {
+      padding: 15px;
+      font-size: 16px;
+    }
+  }
+  
+.reviews-slider {
+    width: 100%;
+    padding: 60px 0;
+}
+
+.swiper-slide {
+    position: relative;
+    width: 400px;
+    height: 520px;
+    background: #fff;
+    box-shadow: 1px 22px 44px rgba(0, 0, 0, 0.2);
+    border-radius: 20% 6px 20% 6px;
+    overflow: hidden;
+    transition: transform 1s ease-in-out, box-shadow 1s ease-in-out;
+    user-select: none;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.swiper-slide-active {
+    border: 3px solid var(--accent);
+    transform: scale(1.05);
+    transition: transform 0.8s ease-out, border 0.6s ease-in-out;
+}
+
+.review-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 100%;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.5);
+    background-image: linear-gradient(180deg, transparent, transparent, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+    color: #fff;
+    text-decoration: none;
+}
+
+.title h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.swiper-slide-active .title h1 {
+    opacity: 0;
+    transition-delay: 1s;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 1s ease-out;
+}
+
+.swiper-slide-active .content {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.8s;
+}
+
+.score {
+    position: absolute;
+    top: -12px;
+    right: 12px;
+    width: 50px;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    background: linear-gradient(120deg, var(--accent), gold);
+    border-radius: 50%;
+    box-shadow: 0 50px 50px -20px rgba(50, 50, 93, 0.25), 0 30px 60px -30px rgba(0, 0, 0, 0.3), inset 0 -2px 6px 0 rgba(10, 37, 64, 0.35);
+    font-size: 1.2rem;
+    font-weight: 600;
+} 
+
+/* .score {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    background: linear-gradient(120deg, var(--accent), gold);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+} */
+
+.text {
+    border-left: 4px solid #6c5893;
+    padding-left: 10px;
+    opacity: 0;
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.swiper-slide-active .text {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.2s;
+}
+
+.text h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.text p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.genre {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.genre span {
+    font-size: 0.8rem;
+    padding: 4px 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.review-card__date {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-top: 10px;
+}
+
+.swiper-slide:hover .review-card .title h1  {
+    color: #ffffff;  /* Синий цвет текста только для заголовка */
+}
+
+.swiper-slide:hover .review-card .title h2  {
+    color: #ffffff;  /* Синий цвет текста только для заголовка */
+}
+
+.swiper-slide:hover .review-card .content  {
+    color: #ffffff;  /* Синий цвет текста только для заголовка */
+}
+
+.swiper-slide:hover .review-card .text p {
+    color: #ffffff;  /* Синий цвет текста только для параграфов */
+}
+
+.swiper-slide:hover .review-card .review-card__date {
+    color: #ffffff;  /* Синий цвет текста только для заголовка */
+}
+
+.swiper-slide:hover .review-card .genre {
+    color: #ffffff;  /* Синий цвет текста только для параграфов */
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 600px) {
+    .swiper-slide {
+        width: 300px;
+    }
+
+    .title h1 {
+        font-size: 1.8rem;
+    }
+
+    .score {
+        width: 40px;
+        font-size: 1rem;
+    }
+
+    .text h2 {
+        font-size: 1.3rem;
+    }
+
+    .text p {
+        font-size: 0.85rem;
+    }
+
+    .genre span {
+        font-size: 0.7rem;
+        padding: 2px 5px;
+    }
+
+    .review-card__date {
+        font-size: 0.7rem;
+    }
+}

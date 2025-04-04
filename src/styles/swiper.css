@@ -1,0 +1,343 @@
+/* /* 
+.reviews-slider{
+    flex-grow: 1;
+}
+
+/* ============== 1 вариант SWIPER ============== */
+/* .reviews-slider {
+    display: flex;
+    max-width: 800px;
+    width: 100%;
+    height: auto;
+    margin: 100px auto;
+}
+
+.slider-wrapper {
+    box-sizing: content-box;
+}
+
+.swiper-slide{
+    display: flex;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide__text {
+    border: 1px solid red;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+} */
+
+/* Кнопки вперед и назад */
+/* .swiper-button-prev{
+    background-color: #bb8b5f30;
+    left: 20px;
+}
+
+.swiper-button-next{
+    background-color: #bb8b5f30;
+    right: 20px;
+}
+
+.swiper-button-prev::after, .swiper-button-next::after{
+    color: #bb8c5f;
+    font-size: 30px;
+} */
+
+/* Пагинация (точки) */
+/* .swiper-pagination{} */
+
+/* .swiper-pagination-bullet{
+    background-color: transparent;
+    width: 15px;
+    height: 15px;
+    opacity: 1;
+    border-radius: 0;
+    border: 2px solid #bb8c5f;
+}  */
+
+/* .swiper-pagination-bullet-active{
+    background-color: #bb8c5f;
+}  */
+
+
+/* Обёртка для слайдера */
+/* .reviews-slider {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    margin: 50px auto;
+    padding: 20px;
+    overflow: hidden;
+} */
+
+/* Обёртка для слайдов */
+/* .slider-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+/* Стили для самих слайдов */
+/* .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ff0000;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+
+} */
+
+/* .swiper-slide-active {
+    transform: scale(1.1);  Активный слайд чуть больше
+} */
+
+/* Картинка в слайде */
+/* .swiper-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+} */
+
+/* Контент внутри слайда */
+/* .swiper-slide__text {
+    width: 100%;
+    padding: 20px;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+} */
+
+/* Кнопки управления (вперед/назад) */
+/* .swiper-button-prev,
+.swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(187, 139, 95, 0.2);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+.swiper-button-next {
+    right: 10px;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 24px;
+    color: #bb8c5f;
+} */
+
+/* Эффект наведения */
+/* .swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background-color: #bb8c5f;
+}
+
+.swiper-button-prev:hover::after,
+.swiper-button-next:hover::after {
+    color: #fff;
+} */
+
+/* Пагинация (точки) */
+/* .swiper-pagination {
+    bottom: 10px !important;
+}
+
+.swiper-pagination-bullet {
+    background-color: transparent;
+    width: 12px;
+    height: 12px;
+    opacity: 1;
+    border: 2px solid #bb8c5f;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #bb8c5f;
+    transform: scale(1.2);
+} */
+
+
+/* Основные стили */
+/* .reviews-slider {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    margin: 50px auto;
+    padding: 20px;
+    overflow: hidden;
+    background: #171718;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+} */
+
+/* Обёртка для слайдов */
+/* .slider-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+} */
+
+/* Стили для самих слайдов */
+/* .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+    
+}
+
+.swiper-slide-active {
+    transform: scale(1.1); Активный слайд чуть больше
+    border: 2px solid #5C62EC;
+    
+} */
+
+/* Картинка в слайде */
+/* .swiper-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+} */
+
+/* Контент внутри слайда */
+/* .review-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    
+}
+
+.review-card__text {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    color: #171718;
+    text-align: center;
+    font-weight: 500;
+}
+
+.review__content_ref {
+    color: #5C62EC;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.review-card__date {
+    font-size: 14px;
+    color: #666;
+} */
+
+/* Кнопки управления (вперед/назад) */
+/* .swiper-button-prev,
+.swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(92, 98, 236, 0.2);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+.swiper-button-next {
+    right: 10px;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 24px;
+    color: #5C62EC;
+} */
+
+/* Эффект наведения */
+/* .swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background-color: #5C62EC;
+}
+
+.swiper-button-prev:hover::after,
+.swiper-button-next:hover::after {
+    color: #fff;
+} */
+
+/* Пагинация (точки) */
+/* .swiper-pagination {
+    bottom: 10px !important;
+}
+
+.swiper-pagination-bullet {
+    background-color: transparent;
+    width: 12px;
+    height: 12px;
+    opacity: 1;
+    border: 2px solid #5C62EC;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #5C62EC;
+    transform: scale(1.2);
+} */
+
+
+/* 📱 Адаптивность */
+/* @media (max-width: 768px) {
+    .swiper-slide {
+        padding: 15px;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        width: 30px;
+        height: 30px;
+    }
+
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+        font-size: 18px;
+    }
+
+    .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+    }
+}  */
