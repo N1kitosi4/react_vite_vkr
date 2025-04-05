@@ -1,0 +1,17 @@
+# Игнорируем Python-артефакты
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Виртуальные окружения
+.venv/
+env/
+venv/
+
+# Логи
+*.log
+
+# Конфигурации IDE
+.vscode/
+.idea/

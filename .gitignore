@@ -1,24 +1,27 @@
-# Logs
-logs
+# Игнорируем Python-артефакты
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Игнорируем Node.js артефакты (если они есть)
+node_modules/
+
+# Логи
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Виртуальные окружения
+.venv/
+env/
+venv/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# Конфигурации IDE
+.vscode/
+.idea/
+
+# Кэшированные файлы
+.cache/
+
+# Файлы, связанные с тестами
+.coverage
+*.coveragerc

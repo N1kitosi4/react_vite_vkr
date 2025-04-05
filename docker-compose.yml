@@ -1,0 +1,98 @@
+version: '3.8'
+
+services:
+  # Backend service (FastAPI)
+  api_service:
+    build:
+      context: ./backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./.env
+    environment:
+      DATABASE_URL: postgresql://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@db_service/${DATABASE_NAME}
+    depends_on:
+      db_service:
+        condition: service_healthy  # Wait for db_service to be healthy before starting
+    networks:
+      - app-network
+    command: >
+      sh -c "alembic -c alembic.ini upgrade head &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+      
+  # PostgreSQL service
+  db_service:
+    image: postgres
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+    environment:
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USERNAME} -d ${DATABASE_NAME}"]
+      interval: 10s
+      retries: 5
+      timeout: 10s
+    networks:
+      - app-network
+
+  # db_test_service:
+  #   image: postgres
+  #   ports:
+  #     - "5436:5432"
+  #   volumes:
+  #     - postgres-db-test:/var/lib/postgresql/data
+  #   env_file:
+  #     - ./.env
+  #   environment:
+  #     POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+  #     POSTGRES_DB: ${TEST_DATABASE_NAME}
+  #     POSTGRES_USER: ${DATABASE_USERNAME}
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USERNAME} -d ${TEST_DATABASE_NAME}"]
+  #     interval: 10s
+  #     retries: 5
+  #     timeout: 10s
+  #   networks:
+  #     - app-network
+
+  # pgAdmin for managing the database
+  pgadmin_service:
+    image: dpage/pgadmin4
+    env_file:
+      - ./.env
+    environment:
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+    ports:
+      - "5050:80"
+    networks:
+      - app-network
+
+  # Frontend service (React/Vite)
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "85:85"
+    env_file:
+      - ./.env
+    environment:
+      VITE_API_URL: ${VITE_API_URL}
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres-db:
+    driver: local

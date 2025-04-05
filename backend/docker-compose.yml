@@ -1,0 +1,85 @@
+services:
+  api_service:
+    build: .
+    volumes:
+      - ./:/app
+    ports:
+      - 8000:8000
+    environment:
+      # #postgresql://postgres:1234@db_service/books_vkr
+      - DATABASE_URL=postgresql://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@db_service/${DATABASE_NAME}
+      - TEST_DATABASE_URL=postgresql://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@db_test_service/${TEST_DATABASE_NAME}
+
+      - DATABASE_HOSTNAME=db_service
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - TEST_DATABASE_NAME=${TEST_DATABASE_NAME}
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - DATABASE_PORT=${DATABASE_PORT}
+    command: >
+      sh -c "alembic -c alembic.ini upgrade head &&
+             alembic -c test_alembic.ini upgrade head &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+    # restart: always
+    depends_on:
+      db_service:
+        condition: service_healthy
+      db_test_service:
+        condition: service_healthy
+    networks:
+      - books_network
+
+  db_service:
+    image: postgres
+    ports:
+      - "5435:5432"
+    restart: always
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d books_vkr" ]
+      interval: 10s
+      retries: 5
+      timeout: 10s
+    networks:
+      - books_network
+
+  db_test_service:
+    image: postgres
+    ports:
+      - "5436:5432"
+    restart: always
+    volumes:
+      - postgres-db-test:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${TEST_DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d books_vkr_test" ]
+      interval: 10s
+      retries: 5
+      timeout: 10s
+    networks:
+      - books_network
+
+  pgadmin_service:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+    ports:
+      - "5050:80"
+    networks:
+      - books_network
+
+volumes:
+  postgres-db:
+  postgres-db-test:
+networks:
+  books_network:
+    driver: bridge
