@@ -72,11 +72,11 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
 async def register_user(user: UserCreate, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
     existing_user_email = db.query(User).filter(User.email == user.email).first()
     if existing_user_email:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Email already registered")
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Данная почта уже зарегистрирована")
 
     existing_user = db.query(User).filter(User.username == user.username).first()
     if existing_user:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Username already registered")
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Пользователь с таким именем уже зарегистрирован")
 
     hashed_password = get_password_hash(user.password)
     new_user = User(username=user.username, email=user.email, hashed_password=hashed_password, is_verified=False)
@@ -95,12 +95,12 @@ async def register_user(user: UserCreate, background_tasks: BackgroundTasks, db:
 def verify_email(token: str, db: Session = Depends(get_db)):
     payload = decode_access_token(token)
     if payload is None:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid or expired token")
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Невалидный или истекший токен")
 
     email = payload.get("sub")
     user = db.query(User).filter(User.email == email).first()
     if not user:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Пользователь не найден")
 
     if user.is_verified:
         return {"message": "Email уже подтвержден"}
@@ -121,7 +121,7 @@ def login_user(user_info: OAuth2PasswordRequestForm = Depends(),
 
     if not user.is_verified:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
-                            detail="Email not verified. Check your inbox.")
+                            detail="Почта не подтверждена. Проверьте входящие и спам.")
 
     access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(data={"sub": user.username},
@@ -162,4 +162,4 @@ def update_user_avatar(
 
 @router.post("/logout", tags=["Authentication"])
 def logout_user():
-    return {"message": "Successfully logged out"}
+    return {"message": "Успешный выход из аккаунта"}

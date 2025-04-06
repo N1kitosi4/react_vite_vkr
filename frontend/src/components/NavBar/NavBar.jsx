@@ -52,18 +52,6 @@ const NavBar = () => {
                             </NavLink>
                         </li>
 
-                        <li className="nav-list__item">
-                            <NavLink to="/login" className={({isActive}) => isActive ? activeLink : inactiveLink}>
-                                Логин
-                            </NavLink>
-                        </li>
-
-                        <li className="nav-list__item">
-                            <NavLink to="/register" className={({isActive}) => isActive ? activeLink : inactiveLink}>
-                                Регистрация
-                            </NavLink>
-                        </li>
-
                     </ul>
                 </div>
             </div>

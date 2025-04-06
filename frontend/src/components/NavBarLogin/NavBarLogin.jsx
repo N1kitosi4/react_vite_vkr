@@ -29,30 +29,6 @@ const NavBarLogin = () => {
                         </li>
 
                         <li className="nav-list__item">
-                            <NavLink to="/myreviews" className={({isActive}) => isActive ? activeLink : inactiveLink}>
-                                Мои отзывы
-                            </NavLink>
-                        </li>
-
-                        <li className="nav-list__item">
-                            <NavLink to="/profile" className={({isActive}) => isActive ? activeLink : inactiveLink}>
-                                Профиль
-                            </NavLink>
-                        </li>
-
-                        <li className="nav-list__item">
-                            <NavLink to="/recommendations" className={({isActive}) => isActive ? activeLink : inactiveLink}>
-                                Рекомендации
-                            </NavLink>
-                        </li>
-
-                        <li className="nav-list__item">
-                            <NavLink to="/logout" className={({isActive}) => isActive ? activeLink : inactiveLink}>
-                                Выйти
-                            </NavLink>
-                        </li>
-
-                        <li className="nav-list__item">
                             <NavLink to="/login" className={({isActive}) => isActive ? activeLink : inactiveLink}>
                                 Логин
                             </NavLink>

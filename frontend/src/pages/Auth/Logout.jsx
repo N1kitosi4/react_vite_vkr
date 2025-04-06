@@ -1,15 +1,18 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useAuth } from "../../utils/AuthContext";
+
 const Logout = () => {
   const navigate = useNavigate();
+    const { logout } = useAuth(); // получаем login из контекста
 
   useEffect(() => {
-    sessionStorage.removeItem("token");
+    logout("token");
     console.log("Logout: ", sessionStorage);
 
     navigate("/login", { replace: true });
-  }, [navigate]);
+  }, [navigate, logout]);
 
   return (
     <div className="container">

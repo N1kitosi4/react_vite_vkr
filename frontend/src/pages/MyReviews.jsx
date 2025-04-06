@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import defaultImg from "./../img/reviews/default_img.jpg";
 
 const MyReviews = () => {
@@ -41,9 +43,7 @@ const MyReviews = () => {
   }, [navigate, token, API_URL]);
 
   const handleEdit = (review) => {
-    alert(
-      "Обновите рейтинг или свой отзыв. Учтите, что рейтинг должен быть от 1 до 5 включительно."
-    );
+    toast.success("Обновите рейтинг или свой отзыв. Учтите, что рейтинг должен быть от 1 до 5 включительно.");
     setEditingReviewId(review.id);
     setUpdatedData({
       rating: review.rating,
@@ -97,6 +97,7 @@ const MyReviews = () => {
   return (
     <main className="section">
       <div className="container">
+        <ToastContainer position="top-right" autoClose={1500} />
         <h1 className="title-1">Мои отзывы</h1>
 
         {reviews.length === 0 ? (

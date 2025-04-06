@@ -117,7 +117,7 @@ def get_genres_reviews(genre: str, skip: Optional[int] = 0, limit: Optional[int]
 
     if not reviews:
         raise HTTPException(status_code=status.HTTP_204_NO_CONTENT,
-                            detail="No reviews found for this genre")
+                            detail="Нет отзывов подходящего жанра")
 
     return [{
         "id": review.id,
@@ -136,7 +136,7 @@ def get_genres_reviews(genre: str, skip: Optional[int] = 0, limit: Optional[int]
 def get_review(review_id: int, db: Session = Depends(get_db)):
     review = db.query(Review).filter(Review.id == review_id).first()
     if not review:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Review not found")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Отзыв не найден")
 
     book = review.book
 
@@ -161,7 +161,7 @@ def get_my_reviews(skip: int = 0, limit: Optional[int] = 15, db: Session = Depen
 
     if not reviews:
         raise HTTPException(status_code=status.HTTP_204_NO_CONTENT,
-                            detail="No reviews found for this user")
+                            detail="Нет отзывов текущего пользователя")
 
     return [{
         "id": review.id,
@@ -263,7 +263,7 @@ def get_reviews(
     reviews = reviews_query.offset(skip).limit(limit).all()
 
     if not reviews:
-        raise HTTPException(status_code=404, detail="No reviews found")
+        raise HTTPException(status_code=404, detail="Отзывы не найдены")
 
     # Вычисление среднего рейтинга для каждого отзыва
     reviews_response = []
@@ -332,7 +332,7 @@ def search_get_reviews(
     reviews = reviews_query.offset(skip).limit(limit).all()
 
     if not reviews:
-        raise HTTPException(status_code=404, detail="No reviews found")
+        raise HTTPException(status_code=404, detail="Отзывы не найдены")
 
     # Формируем ответ
     reviews_response = []
@@ -381,8 +381,6 @@ def rate_review(
     existing_rating = db.query(ReviewRating).filter(
         ReviewRating.review_id == review_id, ReviewRating.user_id == current_user.id
     ).first()
-
-    print("existing_rating with review_id=", review_id, existing_rating)
 
     if existing_rating and review_rating.rating == existing_rating.rating:
         db.delete(existing_rating)
@@ -435,7 +433,7 @@ def update_review(review_id: int, review_update: ReviewUpdate, db: Session = Dep
 
     if not review:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                            detail="Review not found or not owned by you")
+                            detail="Отзыв не найден или не принадлежит Вам")
 
     for key, value in review_update.model_dump(exclude_unset=True).items():
         setattr(review, key, value)
@@ -464,7 +462,7 @@ def delete_review(review_id: int, db: Session = Depends(get_db),
 
     if not review:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                            detail="Review not found or not owned by you")
+                            detail="Отзыв не найден или не принадлежит Вам")
 
     db.delete(review)
     db.commit()

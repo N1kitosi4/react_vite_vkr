@@ -2,9 +2,6 @@ import "./styles/main.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// import gitHub from "./img/icons/gitHub.svg"
-// import gitHub_black from "./img/icons/gitHub-black.svg"
-
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home";
@@ -23,15 +20,17 @@ import CreateBook from "./components/CreateBook/CreateBook";
 import Recommendations from "./pages/Recommendations";
 import NavBarLogin from "./components/NavBarLogin/NavBarLogin";
 
-//import PrivateRoute from './utils/PrivateRoute';
+import { useAuth } from "./utils/AuthContext";
 
 function App() {
+  const { isAuthenticated } = useAuth();
+  
   return (
     <>
       <div className="App">
         <Router>
           <ScrollToTop />
-          <NavBar />
+          {isAuthenticated ? <NavBar /> : <NavBarLogin />}
 
           <Routes>
             <Route path="/" element={<Home />} />

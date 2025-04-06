@@ -99,7 +99,7 @@ const CreateBook = () => {
       );
 
       console.log("Изображение загружено!");
-      
+
       toast.success("Изображение загружено!");
 
       navigate("/create-review", {

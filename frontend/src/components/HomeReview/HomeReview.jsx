@@ -23,7 +23,9 @@ const HomeReview = ({ review }) => {
     month: "long",
     year: "numeric",
   });
-  const imageURL = book_img ? `http://127.0.0.1:8000${book_img}` : defaultImg;
+
+  const API_URL = import.meta.env.VITE_API_URL;
+  const imageURL = book_img ? `${API_URL}${book_img}` : defaultImg;
   const navigate = useNavigate();
 
   const [userRating, setUserRating] = useState(() => {
@@ -37,7 +39,6 @@ const HomeReview = ({ review }) => {
 
   const current_token = sessionStorage.getItem("token");
 
-  const API_URL = import.meta.env.VITE_API_URL;
 
   // Проверка авторизации
   useEffect(() => {
