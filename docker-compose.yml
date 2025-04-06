@@ -13,13 +13,17 @@ services:
       - ./.env
     environment:
       DATABASE_URL: postgresql://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@db_service/${DATABASE_NAME}
+      TEST_DATABASE_URL: postgresql://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@db_test_service/${TEST_DATABASE_NAME}
     depends_on:
       db_service:
         condition: service_healthy  # Wait for db_service to be healthy before starting
+      db_test_service:
+        condition: service_healthy 
     networks:
       - app-network
     command: >
       sh -c "alembic -c alembic.ini upgrade head &&
+             alembic -c test_alembic.ini upgrade head &&
              uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
       
   # PostgreSQL service
@@ -43,25 +47,25 @@ services:
     networks:
       - app-network
 
-  # db_test_service:
-  #   image: postgres
-  #   ports:
-  #     - "5436:5432"
-  #   volumes:
-  #     - postgres-db-test:/var/lib/postgresql/data
-  #   env_file:
-  #     - ./.env
-  #   environment:
-  #     POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-  #     POSTGRES_DB: ${TEST_DATABASE_NAME}
-  #     POSTGRES_USER: ${DATABASE_USERNAME}
-  #   healthcheck:
-  #     test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USERNAME} -d ${TEST_DATABASE_NAME}"]
-  #     interval: 10s
-  #     retries: 5
-  #     timeout: 10s
-  #   networks:
-  #     - app-network
+  db_test_service:
+    image: postgres
+    ports:
+      - "5436:5432"
+    volumes:
+      - postgres-db-test:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+    environment:
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${TEST_DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USERNAME} -d ${TEST_DATABASE_NAME}"]
+      interval: 10s
+      retries: 5
+      timeout: 10s
+    networks:
+      - app-network
 
   # pgAdmin for managing the database
   pgadmin_service:
@@ -95,4 +99,4 @@ networks:
 
 volumes:
   postgres-db:
-    driver: local
+  postgres-db-test:
