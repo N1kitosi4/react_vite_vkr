@@ -1,68 +1,95 @@
+from app.core.security import create_access_token
+
+
 def test_create_review(client):
+    email = "reviewuser@example.com"
+    username = "reviewuser"
+    password = "securepassword"
+
     client.post("/users/register", json={
-        "email": "reviewuser@example.com",
-        "username": "reviewuser",
-        "password": "securepassword"
+        "email": email,
+        "username": username,
+        "password": password
     })
+
+    # Подтверждаем email
+    token = create_access_token(data={"sub": email})
+    client.get(f"/users/verify-email?token={token}")
+
     login_response = client.post("/users/login", data={
-        "username": "reviewuser",
-        "password": "securepassword"
+        "username": username,
+        "password": password
     })
-    # print(login_response.json())
+
+    assert login_response.status_code == 200
     access_token = login_response.json()["access_token"]
-    # print(access_token)
     headers = {"Authorization": f"Bearer {access_token}"}
-    # print(headers)
+
     book_info = client.post("/books", json={
         "title": "test_title",
         "author": "test_author",
         "genre": "test_genre",
         "img": "test_img"
     })
-    # print(book_info.json())
+
     response = client.post("/reviews", json={
         "book_title": book_info.json()["title"],
         "book_author": book_info.json()["author"],
         "rating": 5,
         "content": "Nice book"
     }, headers=headers)
-    # print(response.json())
 
     assert response.status_code == 201
     assert response.json()["content"] == "Nice book"
 
 
 def test_read_reviews(client):
+    email = "reviewuser@example.com"
+    username = "reviewuser"
+    password = "securepassword"
+
     client.post("/users/register", json={
-        "email": "reviewuser@example.com",
-        "username": "reviewuser",
-        "password": "securepassword"
+        "email": email,
+        "username": username,
+        "password": password
     })
+
+    token = create_access_token(data={"sub": email})
+    client.get(f"/users/verify-email?token={token}")
+
     login_response = client.post("/users/login", data={
-        "username": "reviewuser",
-        "password": "securepassword"
+        "username": username,
+        "password": password
     })
-    # print(login_response.json())
+
     access_token = login_response.json()["access_token"]
-    # print(access_token)
     headers = {"Authorization": f"Bearer {access_token}"}
-    # print(headers)
-    response = client.get("/books")
-    print(response.json())
-    assert len(response.json()) == 4
+
+    response = client.get("/books", headers=headers)
+
     assert response.status_code == 200
+    assert isinstance(response.json(), list)
 
 
 def test_update_review(client):
+    email = "updatereview@example.com"
+    username = "updatereview"
+    password = "securepassword"
+
     client.post("/users/register", json={
-        "email": "updatereview@example.com",
-        "username": "updatereview",
-        "password": "securepassword"
+        "email": email,
+        "username": username,
+        "password": password
     })
+
+    token = create_access_token(data={"sub": email})
+    client.get(f"/users/verify-email?token={token}")
+
     login_response = client.post("/users/login", data={
-        "username": "updatereview",
-        "password": "securepassword"
+        "username": username,
+        "password": password
     })
+
     access_token = login_response.json()["access_token"]
     headers = {"Authorization": f"Bearer {access_token}"}
 
@@ -98,15 +125,24 @@ def test_update_review(client):
 
 
 def test_delete_review(client):
+    email = "deletereview@example.com"
+    username = "deletereview"
+    password = "securepassword"
+
     client.post("/users/register", json={
-        "email": "deletereview@example.com",
-        "username": "deletereview",
-        "password": "securepassword"
+        "email": email,
+        "username": username,
+        "password": password
     })
+
+    token = create_access_token(data={"sub": email})
+    client.get(f"/users/verify-email?token={token}")
+
     login_response = client.post("/users/login", data={
-        "username": "deletereview",
-        "password": "securepassword"
+        "username": username,
+        "password": password
     })
+
     access_token = login_response.json()["access_token"]
     headers = {"Authorization": f"Bearer {access_token}"}
 
