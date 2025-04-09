@@ -56,7 +56,7 @@ const Recommendations = () => {
           <ul className="reviews">
             {reviews.map((review) => (
               <li key={review.id} className="review">
-                {/*<NavLink to={`/review/${review.id}`}>*/}
+                <NavLink to={`/review/${review.id}`}>
                 <div>
                   <div className="review__img">
                     <img
@@ -73,7 +73,7 @@ const Recommendations = () => {
                   <p className="review__genre">{review.genre}</p>
                 </div>
 
-                {/* </NavLink>*/}
+                </NavLink>
               </li>
             ))}
           </ul>

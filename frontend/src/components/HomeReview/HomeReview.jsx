@@ -18,6 +18,13 @@ const HomeReview = ({ review }) => {
     rating,
   } = review;
 
+  0
+const response = {title: "Harry Potter 4",
+  author: "J.K. Rowling",
+  id: 2,
+  img: "/static/book_images/34a13dd2-2fef-46dc-b2a1-e10b323ae6d5.jpg",
+  genre: "fantasy"}
+
   const formattedDate = new Date(created_at).toLocaleDateString("ru-RU", {
     day: "numeric",
     month: "long",

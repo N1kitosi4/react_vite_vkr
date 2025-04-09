@@ -22,7 +22,7 @@ app.mount("/static/avatars", StaticFiles(directory="app/uploads/avatars"), name=
 app.mount("/static/book_images", StaticFiles(directory="app/uploads/book_images"), name="book_images")
 # app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
-templates = Jinja2Templates(directory="app/templates")
+# templates = Jinja2Templates(directory="app/templates")
 
 app.include_router(user.router, prefix="/users")
 app.include_router(book.router, prefix="/books", tags=["Books"])
