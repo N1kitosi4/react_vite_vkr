@@ -72,5 +72,4 @@ graph TD
     C --> D[(PostgreSQL)]
     C --> E[Redis]
     C --> F[ML Service]
-    F --> G[Word2Vec]
-    F --> H[TF-IDF]
+    С --> G[SMTP]
