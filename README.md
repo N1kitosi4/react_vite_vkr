@@ -72,4 +72,4 @@ graph TD
     C --> D[(PostgreSQL)]
     C --> E[Redis]
     C --> F[ML Service]
-    С --> G[SMTP]
+    C --> G[SMTP]
