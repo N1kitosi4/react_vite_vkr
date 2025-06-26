@@ -70,6 +70,5 @@ graph TD
     A[Клиент] --> B[React SPA]
     B --> C[FastAPI]
     C --> D[(PostgreSQL)]
-    C --> E[Redis]
-    C --> F[ML Service]
-    C --> G[SMTP]
+    C --> E[ML Service]
+    C --> F[SMTP]
