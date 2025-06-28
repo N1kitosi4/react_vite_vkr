@@ -13,11 +13,11 @@ node_modules/
 # Виртуальные окружения
 .venv/
 env/
-.env
 
+.env
 backend/.env
 frontend/.env
-frontend/.env
+
 venv/
 
 # Конфигурации IDE
